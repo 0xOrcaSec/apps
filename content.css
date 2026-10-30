@@ -1,0 +1,184 @@
+/* Full-screen transparent drawing overlay */
+#mini-draw-overlay-canvas {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 2147483645 !important;
+  pointer-events: none !important;
+  background: transparent !important;
+}
+
+#mini-draw-overlay-canvas.active-drawing {
+  pointer-events: auto !important;
+  cursor: crosshair !important;
+}
+
+/* Tiny floating icons bar - hidden by default until triggered */
+#mini-draw-floating-bar {
+  --icon-size: 28px;
+  position: fixed !important;
+  top: 12px !important;
+  right: 12px !important;
+  z-index: 2147483647 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  padding: 4px 6px !important;
+  background: rgba(15, 23, 42, 0.78) !important;
+  backdrop-filter: blur(6px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 999px !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25) !important;
+  opacity: 0.8 !important;
+  transition: opacity 0.15s ease, transform 0.15s ease !important;
+  user-select: none !important;
+  direction: rtl !important;
+  font-family: system-ui, -apple-system, sans-serif !important;
+}
+
+#mini-draw-floating-bar:hover {
+  opacity: 1 !important;
+}
+
+#mini-draw-floating-bar.hidden-bar {
+  display: none !important;
+}
+
+/* Drag grip */
+.md-grip {
+  cursor: grab !important;
+  color: rgba(255, 255, 255, 0.65) !important;
+  font-size: 13px !important;
+  padding: 0 3px !important;
+  line-height: 1 !important;
+}
+
+.md-grip:active {
+  cursor: grabbing !important;
+}
+
+/* Tiny icon buttons */
+.md-icon-btn {
+  width: var(--icon-size) !important;
+  height: var(--icon-size) !important;
+  min-width: var(--icon-size) !important;
+  min-height: var(--icon-size) !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: 1px solid transparent !important;
+  border-radius: 50% !important;
+  background: rgba(255, 255, 255, 0.12) !important;
+  color: #ffffff !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  transition: all 0.12s ease !important;
+  position: relative !important;
+}
+
+.md-icon-btn svg {
+  width: calc(var(--icon-size) * 0.56) !important;
+  height: calc(var(--icon-size) * 0.56) !important;
+  fill: none !important;
+  stroke: currentColor !important;
+  stroke-width: 2 !important;
+  stroke-linecap: round !important;
+  stroke-linejoin: round !important;
+  pointer-events: none !important;
+}
+
+.md-icon-btn:hover {
+  background: rgba(255, 255, 255, 0.26) !important;
+  transform: scale(1.06) !important;
+}
+
+.md-icon-btn.active {
+  background: #2563eb !important;
+  border-color: #93c5fd !important;
+  box-shadow: 0 0 8px rgba(37, 99, 235, 0.65) !important;
+}
+
+.md-icon-btn.active-marker {
+  background: #eab308 !important;
+  color: #0f172a !important;
+  border-color: #fef08a !important;
+  box-shadow: 0 0 8px rgba(234, 179, 8, 0.65) !important;
+}
+
+.md-icon-btn.danger:hover {
+  background: #f59e0b !important;
+  color: #ffffff !important;
+}
+
+/* Dedicated Close Button */
+.md-icon-btn.close-btn {
+  background: rgba(239, 68, 68, 0.25) !important;
+  border-color: rgba(248, 113, 113, 0.35) !important;
+  color: #fecaca !important;
+  margin-right: 2px !important;
+}
+
+.md-icon-btn.close-btn:hover {
+  background: #dc2626 !important;
+  border-color: #fca5a5 !important;
+  color: #ffffff !important;
+}
+
+/* Tiny color dot */
+.md-color-wrap {
+  width: calc(var(--icon-size) * 0.72) !important;
+  height: calc(var(--icon-size) * 0.72) !important;
+  border-radius: 50% !important;
+  overflow: hidden !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.7) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  padding: 0 !important;
+}
+
+.md-color-input {
+  width: 200% !important;
+  height: 200% !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: -50% !important;
+  cursor: pointer !important;
+  background: none !important;
+}
+
+/* Tiny size control buttons (+ / -) */
+.md-scale-group {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 2px !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-left: 1px solid rgba(255, 255, 255, 0.2) !important;
+  padding: 0 4px !important;
+  margin: 0 2px !important;
+}
+
+.md-mini-btn {
+  width: 18px !important;
+  height: 18px !important;
+  border: none !important;
+  border-radius: 50% !important;
+  background: rgba(255, 255, 255, 0.14) !important;
+  color: #f8fafc !important;
+  font-size: 11px !important;
+  font-weight: bold !important;
+  line-height: 1 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  padding: 0 !important;
+}
+
+.md-mini-btn:hover {
+  background: rgba(255, 255, 255, 0.3) !important;
+}
